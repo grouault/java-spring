@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.exagone</groupId>
+  <artifactId>project-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>${project.artifactId}</name>
+  
+  <properties>
+  	
+  	<!-- default. -->
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<servlet-api.version>2.5</servlet-api.version>
+	
+	<!-- logging. -->
+	<commons-logging.version>1.1.1</commons-logging.version>
+	<commons-lang.version>2.6</commons-lang.version>  	
+  	<log4j.version>1.2.14</log4j.version>
+  	
+  	<!-- spring. -->
+  	
+  	<!-- persistence. -->
+  	
+  	<!-- test. -->
+  	<junit.version>3.8.1</junit.version>
+  	
+  </properties>
+  
+  <profiles>
+ 	<profile>
+		<id>envlocalhost</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+			<property>
+				<name>envConfig</name>
+				<value>localhost</value>
+			</property>
+		</activation>
+		<properties>
+			<envConfig>localhost</envConfig>
+		</properties>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+  </profiles>
+  
+  <modules>
+  	<module>project-web</module>
+  </modules>
+</project>
