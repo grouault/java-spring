@@ -1,0 +1,31 @@
+<!--
+  - Exemple chargement applicatf via fichier application-context.xml
+  - Location of the XML file that defines the root application context.
+  - Applied by ContextLoaderListener.
+-->
+  <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/application-context.xml</param-value>
+  </context-param>
+
+  <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+
+
+<!--
+  - Exemple chargement applicatf en pointant les fichers directement
+  - Location of the XML file that defines the root application context.
+  - Applied by ContextLoaderListener.
+-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		    /WEB-INF/spring-database.xml,
+			/WEB-INF/spring-security.xml
+		</param-value>
+	</context-param>  
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>  
