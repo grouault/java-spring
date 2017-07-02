@@ -1,0 +1,20 @@
+<!--
+Cette configuration redirige l’ensemble des requêtes HTTP vers Spring Security. En interne,
+ce filtre délègue les requêtes à un Bean nommé springSecurityFilterChain défini dans le
+contexte Spring. Ce Bean est automatiquement créé par Spring Security dès que le schéma
+XML de Spring Security est utilisé. Il est donc essentiel de ne pas explicitement déclarer un
+Bean portant ce nom.
+Pour que Spring Security soit opérationnel, il faut bien sûr qu’un contexte Spring soit déclaré
+dans le fichier web.xml (chargé généralement par un ContextLoaderListener).
+-->
+<filter>
+  <filter-name>springSecurityFilterChain</filter-name>
+  <filter-class>
+  org.springframework.web.filter.DelegatingFilterProxy
+  </filter-class>
+</filter>
+( ... )
+<filter-mapping>
+  <filter-name>springSecurityFilterChain</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
