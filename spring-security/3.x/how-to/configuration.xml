@@ -17,6 +17,7 @@ Une configuration très élémentaire pour une application Web serait la suivant
  
   <http auto-config="true">←1
     <intercept-url pattern="/**" access="ROLE_USER" />←2
+    <intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
   </http>
   <authentication-provider>←3
     <user-service>←4
