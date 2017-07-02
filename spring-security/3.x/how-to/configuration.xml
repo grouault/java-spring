@@ -15,11 +15,11 @@ Une configuration très élémentaire pour une application Web serait la suivant
   http://www.springframework.org/schema/beans/spring-beans.xsd
 
  
-  <http auto-config="true">←
-    <intercept-url pattern="/**" access="ROLE_USER" />←
+  <http auto-config="true">←1
+    <intercept-url pattern="/**" access="ROLE_USER" />←2
   </http>
-  <authentication-provider>←
-    <user-service>←
+  <authentication-provider>←3
+    <user-service>←4
       <user name="admin" password="mdp4admin"
        authorities="ROLE_ADMIN,ROLE_USER" />
       <user name="tudu" password="mdp4tudu"
@@ -28,3 +28,18 @@ Une configuration très élémentaire pour une application Web serait la suivant
   </authentication-provider>                     
                       
 </beans:beans>
+
+<--
+1- L’attribut auto-config implique que Spring Security déclare une configuration par
+défaut, qui positionne notamment une authentification via un formulaire généré
+dynamiquement ; un filtre gère la déconnexion et un service pour se connecter automatiquement
+grâce à un cookie.
+Au repère 2, une règle d’accès est précisée : tout utilisateur doit posséder le rôle ROLE_USER
+pour pouvoir consulter n’importe quelle URL. La syntaxe utilisée, /**, est dite « syntaxe
+Ant ».
+Les balises suivantes servent à définir un annuaire d’utilisateurs. Cet annuaire est très simplement
+défini dans le fichier de contexte Spring. La balise authentication-provider 3 précise
+que le user-service contenu 4 peut servir de source d’authentification. Dans la balise userservice
+sont définis deux utilisateurs. Le premier d’entre eux a pour identifiant admin, pour
+mot de passe mdp4admin et a deux rôles, ROLE_USER et ROLE_ADMIN.
+-->
