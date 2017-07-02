@@ -1,5 +1,6 @@
 Dans ce fichier on trouve :
 - Configuration du contexte applicatif
+- Configuration du context Spring ==> ContextLoadListener
 - Configuration du contexte Spring-mvc : 
 - filtres:
 -- filtre Spring-security
