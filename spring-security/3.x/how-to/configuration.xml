@@ -6,11 +6,25 @@ applicationContext-security.xml
 <!--
 Pour utiliser Spring Security, il faut d’abord déclarer son schéma XML :
 Cette déclaration permet d’utiliser directement (sans préfixe) les balises de Spring Security.
+Une configuration très élémentaire pour une application Web serait la suivante :
 -->
 <beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:beans="http://www.springframework.org/schema/beans"
   xsi:schemaLocation="
   http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans.xsd
-  (...)
+
+ 
+  <http auto-config="true">←
+    <intercept-url pattern="/**" access="ROLE_USER" />←
+  </http>
+  <authentication-provider>←
+    <user-service>←
+      <user name="admin" password="mdp4admin"
+       authorities="ROLE_ADMIN,ROLE_USER" />
+      <user name="tudu" password="mdp4tudu"
+        authorities="ROLE_USER" />
+  </user-service>
+  </authentication-provider>                     
+                      
 </beans:beans>
