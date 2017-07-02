@@ -1,0 +1,16 @@
+Dans ce fichier on trouve :
+- Configuration du contexte applicatif
+- Configuration du contexte Spring-mvc : 
+- filtres:
+-- filtre Spring-security
+
+# Chargement du context applicatif
+##
+Dans ce context on trouve :
+- conf. database : Spring-database.xml
+- conf. securité : Spring-security.xml
+
+# Context Spring MVC
+##
+- conf. Servlet MVC et du routage : DispatcherServlet
+
